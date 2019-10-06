@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Brain Trainer</string>
-    <string name="button_start_new_game">Начать новую игру</string>
+    <string name="button_start_new_game">Start new game</string>
+    <string name="start_game">Start Game</string>
 </resources>

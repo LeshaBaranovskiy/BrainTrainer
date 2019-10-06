@@ -98,9 +98,35 @@ public class MainActivity extends AppCompatActivity {
             textViews.add(textViewSecond);
             textViews.add(textViewThird);
         }
+        ArrayList<Integer> wrongAnswers = new ArrayList<>();
 
         for (int i = 0; i < textViews.size(); i++) {
-            int random = -10 + (int) (Math.random() * max * 2 + 1) - (max-min);
+            int random;
+            int pov = 0;
+
+            int mark = (int) (Math.random() * 2);
+            isPositive = mark == 1;
+
+            if (isPositive) {
+                random = rightAnswer + (int) (Math.random() * 5);
+            } else {
+                random = rightAnswer - (int) (Math.random() * 5);
+            }
+
+            if (!wrongAnswers.isEmpty()) {
+                for (int answer : wrongAnswers) {
+                    if (answer == random) {
+                        pov++;
+                    }
+                }
+            }
+
+            wrongAnswers.add(random);
+
+            if (random == rightAnswer || pov != 0) {
+                i--;
+                continue;
+            }
 
             if (i == rightAnswerPosition) {
                 textViews.get(i).setText(Integer.toString(rightAnswer));
